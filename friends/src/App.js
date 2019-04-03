@@ -22,10 +22,33 @@ class App extends Component {
         });
   }
 
+  //FORM HANDLER
+  formHaner(event) {
+    event.preventDefault();
+    
+  }
+
+  saveFriend(name, age, email) {
+    axios.post('http://localhost:5000/friends', {
+      name: name,
+      age: age,
+      email: email,
+    })
+    .then((res) => {
+      console.log(res);
+    }) 
+    .catch((err) => {
+      console.log('you fucked up because', err);
+    })
+  }
+
   render() {
     return (
       <div className="App">
-        <FriendsList friends={this.state.friends}/>
+        <FriendsList 
+          friends={this.state.friends} 
+          saveFriend={this.saveFriend}
+        />
       </div>
     );
   }

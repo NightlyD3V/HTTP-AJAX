@@ -4,7 +4,7 @@ function FriendsList(props) {
     return (
         <div>
             {props.friends.map((newFriend) => (
-                <div>
+                <div key={newFriend.id}>
                     <h1>{newFriend.name}</h1>
                     <h3>{newFriend.age}</h3>
                     <h3>{newFriend.email}</h3>
@@ -12,10 +12,10 @@ function FriendsList(props) {
                 </div>
             ))}
             <form>
-                <input placeholder="Friend Name..."></input>
-                <input placeholder="Age..."></input>
-                <input placeholder="Email..."></input>
-                <button>Save</button>
+                <input name="friendName" value="" placeholder="Friend Name..."></input>
+                <input name="friendAge" value="" placeholder="Age..."></input>
+                <input name="friendEmail" value="" placeholder="Email..."></input>
+                <button onClick={props.saveFriend()}>Save</button>
             </form>
         </div>
     )
