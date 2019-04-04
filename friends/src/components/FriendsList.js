@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from 'axios';
+import './FriendsList.css';
 
 class FriendsList extends React.Component {
     constructor(props) {
@@ -37,13 +37,14 @@ class FriendsList extends React.Component {
 
     render(){
         return (
-            <div>
-                <form onSubmit={this.addFriend}>
+            <div className="form-container">
+                <form onSubmit={this.addFriend} className="form">
                     <input 
                         onChange={this.changeHandler}
                         name="name" 
                         value={this.state.friendsList.name} 
                         placeholder="Friend..."
+                        className="form-name"
                         required
                     >
                     </input>
@@ -51,8 +52,10 @@ class FriendsList extends React.Component {
                     <input 
                         onChange={this.changeHandler}
                         name="age"
+                        type="number"
                         value={this.state.friendsList.age}
                         placeholder="Age..."
+                        className="form-age"
                         required    
                     >
                     </input>
@@ -60,26 +63,32 @@ class FriendsList extends React.Component {
                     <input 
                         onChange={this.changeHandler}
                         name="email" 
+                        type="email"
                         value={this.state.friendsList.email} 
                         placeholder="Email..."
+                        className="form-email"
                         required
                     >
                     </input>
 
-                    <button type="submit">Save</button>
+                    <button type="submit" className="saveButton">Save</button>
                 </form>
-
+                
                 {this.props.friends.map((newFriend) => (
-                    <div key={newFriend.id}>
-                        <h1>{newFriend.name}</h1>
-                        <h3>{newFriend.age}</h3>
+                    <div key={newFriend.id} className="friend-card">
+                        <div className="friend-name_age">
+                            <h1>{newFriend.name}</h1>
+                            <h3>Age: {newFriend.age}</h3>
+                        </div>
                         <h3>{newFriend.email}</h3>
-                        <div>
-                            <button 
-                                onClick={() => this.props.deleteFriend(newFriend.id)}>Delete
-                            </button>
+                        <div className="card-button_container">
                             <button
+                                className="updateButton"
                                 onClick={() => this.props.updateFriend(newFriend.id, this.state.friendsList)}>Update
+                            </button>
+                            <button 
+                                className="deleteButton"
+                                onClick={() => this.props.deleteFriend(newFriend.id)}>Delete
                             </button>
                         </div>
                     </div>
