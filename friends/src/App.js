@@ -22,21 +22,42 @@ class App extends Component {
         });
   }
 
-  //FORM HANDLER
-  formHaner(event) {
-    event.preventDefault();
-    
-  }
-
-  saveFriend(name, age, email) {
-    axios.post('http://localhost:5000/friends', {
-      name: name,
-      age: age,
-      email: email,
-    })
+  //SAVE FRIEND
+  saveFriend = (friends) => {
+    axios.post('http://localhost:5000/friends', friends)
     .then((res) => {
       console.log(res);
+      this.setState({
+          friends: res.data,
+      })
     }) 
+    .catch((err) => {
+      console.log('you fucked up because', err);
+    })
+  }
+
+  //REMOVE FRIEND 
+  deleteFriend = (id) => {
+    axios.delete(`http://localhost:5000/friends/${id}`)
+    .then((res) => {
+      this.setState({
+          friends: res.data,
+        })
+      })
+    .catch((err) => {
+      console.log('you fucked up because', err);
+    })
+  }
+
+  //UPDATE FRIEND 
+  updateFriend = (id, update) => {
+    axios.put(`http://localhost:5000/friends/${id}`, update)
+    .then((res) => {
+      console.log(res);
+      this.setState({
+        friends: res.data,
+      })
+    })
     .catch((err) => {
       console.log('you fucked up because', err);
     })
@@ -48,6 +69,8 @@ class App extends Component {
         <FriendsList 
           friends={this.state.friends} 
           saveFriend={this.saveFriend}
+          deleteFriend={this.deleteFriend}
+          updateFriend={this.updateFriend}
         />
       </div>
     );
