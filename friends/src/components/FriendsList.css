@@ -1,5 +1,6 @@
 .form-container {
     background-color: lightslategray;
+    height: 100%;
 }
 .form {
     display: flex;
@@ -34,13 +35,11 @@
 .friend-card {
     background-color: white;
     padding: 20px;
-    box-sizing: border-box;
     max-width: 400px;
     display: flex;
     flex-direction: column;
     margin: 0 auto;
-    margin-bottom: 0px;
-    margin-top: 85px;
+    margin-bottom: 20px;
     -webkit-box-shadow: -1px 0px 16px -2px rgba(0,0,0,0.75);
     -moz-box-shadow: -1px 0px 16px -2px rgba(0,0,0,0.75);
     box-shadow: -1px 0px 16px -2px rgba(0,0,0,0.75);
@@ -53,6 +52,9 @@
     background-color: red;
     border: 1px solid black;
     color: white;
+    padding: 10px;
+}
+.updateButton {
     padding: 10px;
 }
 .friend-name_age {
@@ -69,6 +71,6 @@
         padding: 0px;
     }
     .friend-card {
-        margin-top: 185px;
+        margin-bottom: 20px;
     }
 }

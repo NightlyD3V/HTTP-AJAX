@@ -79,6 +79,10 @@ class App extends Component {
           deleteFriend={this.deleteFriend}
           updateFriend={this.updateFriend}/>}>
         </Route>
+        <Route path="/update-friends" render={() => <UpdateFriend 
+          saveFriend={this.saveFriend}
+          updateFriend={this.updateFriend}
+        />}></Route>
       </div>
     );
   }
